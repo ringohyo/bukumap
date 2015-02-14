@@ -4,7 +4,6 @@ class CreateBookmarks < ActiveRecord::Migration
       t.string :title
       t.string :url
       t.integer :category_id
-
       t.timestamps
     end
   end

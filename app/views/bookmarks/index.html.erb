@@ -1,25 +1,40 @@
-
-
-<h1>マイページ</h1>
-
-<% @bookmarks.each do |bookmark| %>
-
+<!-- 可変レイアウト -->
+<div class="container-fluid">
   <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <img src="assets/sample.png" alt="sample_image" width="128" hight="128">
-        <div class="caption">
-          <h4><%= bookmark.category_id %>.<%= bookmark.title %></h4>
-          <p style="float:right;"><%= link_to 'Edit', edit_bookmark_path(bookmark), class: "btn btn-primary" %></p>
-          <p><%= bookmark.url %></p>
-        </div>
-      </div>
+    
+    
+    <div class="col-md-2" style="color:white; background-color: blue;">
+    サイドバーの表示
     </div>
+    
+
+    <div class="col-md-10" style="background-color: aliceblue;">
+      <h2>マイページ</h2>
+      <div class="row">
+      <% @bookmarks.each do |bookmark| %>
+          <div class="col-md-3">
+            <div class="thumbnail">
+              <p>No.<%= bookmark.id %></p>
+              <img src="assets/sample.png" alt="sample_image" width="128" hight="128">
+              <div class="caption">
+                <%= bookmark.category_id %>
+                <p style="float:right;"><%= link_to 'Edit', edit_bookmark_path(bookmark), class: "btn btn-primary" %></p>
+                <p><%= bookmark.title %></p>
+                <!--<p><%= bookmark.url %></p>-->
+              </div>
+            </div>
+            
+          </div>
+      <% end %>
+      </div>
+      <p style="float:right;"><%= link_to "ブクマ作成", new_bookmark_path, class: "btn btn-lg btn-default" %></p>
+    </div>
+    
+    
   </div>
+</div>
 
-<% end %>
 
-<br>
-<br>
-<%= link_to "ブクマ追加", new_bookmark_path, class: "btn btn-lg btn-default" %>
 
+  </div>
+</div>

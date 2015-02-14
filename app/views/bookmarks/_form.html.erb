@@ -14,25 +14,22 @@
   
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
   
   <div class="field">
     <%= f.label :url %><br>
-    <%= f.text_field :url %>
+    <%= f.text_field :url, class: "form-control" %>
   </div>
   
   <div class="field">
     <%= f.label :category_id %><br>
-    <%= f.number_field :category_id %>
+    <%= f.number_field :category_id, class: "form-control" %>
   </div>
   
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-info" %>
   </div>
-
-
-
 
 <% end %>
 
