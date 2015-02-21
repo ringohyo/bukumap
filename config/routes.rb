@@ -1,7 +1,8 @@
 Bukumap::Application.routes.draw do
   
-  devise_for :users
   resources :bookmarks
+  resources :categories
+  devise_for :users
   root 'bookmarks#index'
 
 

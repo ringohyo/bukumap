@@ -21,8 +21,9 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "HOME", bookmarks_path %></li>
         <li><%= link_to "ブクマ作成", new_bookmark_path %></li>
-        <li><%= link_to "カテゴリ編集",   '#' %></li>
+        <li><%= link_to "カテゴリ一覧", categories_path %></li>
         <li><%= link_to "アカウント編集", '#' %></li>
         <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></li>
       </ul>
@@ -31,7 +32,7 @@
 </header>
 
 <div class="container">
-<%= notice %>
+<p id="notice"><%= notice %></p>
 <%= alert %>
 <%= yield %>
 </div>

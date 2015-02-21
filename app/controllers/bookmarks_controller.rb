@@ -5,30 +5,38 @@ class BookmarksController < ApplicationController
   # GET /bookmarks.json
   def index
     @bookmarks = Bookmark.all
+    @categories = Category.all
   end
 
   # GET /bookmarks/1
   # GET /bookmarks/1.json
   def show
+    @bookmark = Bookmark.find(params[:id])
+    if @bookmark.category
+       @category_title = @bookmark.category.title
+    end
   end
 
   # GET /bookmarks/new
   def new
     @bookmark = Bookmark.new
+    @category = Category.new
+    generate_category_list
   end
 
   # GET /bookmarks/1/edit
   def edit
+    @bookmark = Bookmark.find(params[:id])
+    generate_category_list
   end
 
   # POST /bookmarks
   # POST /bookmarks.json
   def create
     @bookmark = Bookmark.new(bookmark_params)
-
     respond_to do |format|
       if @bookmark.save
-        format.html { redirect_to @bookmark, notice: 'Bookmark was successfully created.' }
+        format.html { redirect_to @bookmark, notice: 'ブックマークを作成しました' }
         format.json { render action: 'show', status: :created, location: @bookmark }
       else
         format.html { render action: 'new' }
@@ -42,7 +50,7 @@ class BookmarksController < ApplicationController
   def update
     respond_to do |format|
       if @bookmark.update(bookmark_params)
-        format.html { redirect_to @bookmark, notice: 'Bookmark was successfully updated.' }
+        format.html { redirect_to @bookmark, notice: '更新しました' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -70,5 +78,9 @@ class BookmarksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def bookmark_params
       params.require(:bookmark).permit(:title, :url, :category_id)
+    end
+    
+    def generate_category_list
+      @categories = Category.find(:all, :order => "title")
     end
 end

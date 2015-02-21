@@ -1,32 +1,30 @@
-<!-- 可変レイアウト -->
 <div class="container-fluid">
   <div class="row">
-    
-    
-    <div class="col-md-2" style="color:white; background-color: blue;">
-    サイドバーの表示
-    </div>
-    
 
+    <%= render 'sidebar' %>
+  
     <div class="col-md-10" style="background-color: aliceblue;">
-      <h2>マイページ</h2>
+      <h4>マイページ</h4>
       <div class="row">
       <% @bookmarks.each do |bookmark| %>
-          <div class="col-md-3">
-            <div class="thumbnail">
-              <p>No.<%= bookmark.id %></p>
-              <img src="assets/sample.png" alt="sample_image" width="128" hight="128">
-              <div class="caption">
-                <%= bookmark.category_id %>
-                <p style="float:right;"><%= link_to 'Edit', edit_bookmark_path(bookmark), class: "btn btn-primary" %></p>
-                <p><%= bookmark.title %></p>
-                <!--<p><%= bookmark.url %></p>-->
-              </div>
-            </div>
-            
+           <div class="col-md-2">
+              <div class="thumbnail">
+                <%= link_to bookmark.url, :target=>["_blank"] do %>
+                    <!--<img src="assets/sample.png" alt="sample_image" width="128" hight="128">-->
+                    <img src="http://capture.heartrails.com/?<%= bookmark.url %>" alt="sample_image">
+                    <!--<p>No.<%= bookmark.id %></p>-->
+                <% end %>
+               </div>               
+                <p>
+                  <%= link_to edit_bookmark_path(bookmark) do %>
+                    <span style="float:right;" class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                  <% end %>
+                  <%= bookmark.title %>
+                </p>
           </div>
       <% end %>
       </div>
+      
       <p style="float:right;"><%= link_to "ブクマ作成", new_bookmark_path, class: "btn btn-lg btn-default" %></p>
     </div>
     
@@ -34,7 +32,3 @@
   </div>
 </div>
 
-
-
-  </div>
-</div>
