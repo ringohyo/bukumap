@@ -7,6 +7,13 @@ class BookmarksController < ApplicationController
     @bookmarks = Bookmark.all
     @categories = Category.all
   end
+ 
+  # GET /bookmarks/category_filter/1
+  def category_filter
+    @bookmarks = Bookmark.where("category_id = ?", params[:id] )
+    @categories = Category.all
+    render :index
+  end
 
   # GET /bookmarks/1
   # GET /bookmarks/1.json

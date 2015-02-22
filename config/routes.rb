@@ -3,6 +3,8 @@ Bukumap::Application.routes.draw do
   resources :bookmarks
   resources :categories
   devise_for :users
+  get "bookmarks/category_filter/:id" => "bookmarks#category_filter", :as => "category_filter"
+  
   root 'bookmarks#index'
 
 
