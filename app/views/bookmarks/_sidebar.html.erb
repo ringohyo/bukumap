@@ -1,12 +1,14 @@
-
 <div class="col-md-2">
   <h4>カテゴリ</h4>
   <ul class="nav nav-pills nav-stacked">
-    <li role="presentation" class="active"><%= link_to "ALL", bookmarks_path %></li>
-    <li role="presentation">
-      <% @categories.each do |category| %>
-        <%= link_to category_filter_path(:id => category.id) do %><%= category.id %>.<%= category.title %><% end %>
-      <% end %>
-    </li>
+    
+    <li role="presentation" <%= raw('class="active"') if @active_id.nil? %> ><%= link_to "ALL", bookmarks_path %></li>
+
+    <% @categories.each.with_index(1) do |category,index| %>
+      <li role="presentation" <%= raw('class="active"') if @active_id == category.id %> >
+        <%= link_to category_filter_path(:id => category.id) do %><%= index %>.<%= category.title %><% end %>
+      </li>
+    <% end %>
+
   </ul>
 </div>

@@ -6,3 +6,13 @@
 .thumbnail{
     margin-bottom: 0;
 }
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: white;
+    background-color: #66cdaa;
+}
+
+// a {
+//     color: #6A9D8C;
+//     text-decoration: none;
+// }

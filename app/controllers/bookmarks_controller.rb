@@ -12,6 +12,7 @@ class BookmarksController < ApplicationController
   def category_filter
     @bookmarks = Bookmark.where("category_id = ?", params[:id] )
     @categories = Category.all
+    @active_id = params[:id].to_i
     render :index
   end
 

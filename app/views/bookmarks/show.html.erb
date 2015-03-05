@@ -1,29 +1,39 @@
 
-<p>
-  <strong>Title:</strong>
-  <%= @bookmark.title %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @bookmark.url %>
-</p>
-
-<p>
+<table class="table table-responsive">
+<tr>
+  <td style="width: 150px;">Title</td>
+  <td><%= @bookmark.title %></td>
+</tr>
+<tr>
+  <td>Url</td>
+  <td><%= @bookmark.url %></td>
+</tr>
+<tr>
   <% if @category_title %>
-    <strong>Category:</strong>
-    <%= @bookmark.category_id %>.<%=h @category_title %></p>
+  <td>Category</td>
+  <td><%= @bookmark.category_id %>.<%=h @category_title %></td>
   <% end %>
-</p>
-
-<!--<p>-->
-<!--  <strong>Category:</strong>-->
-<!--  <%= @bookmark.category_id %>-->
-<!--</p>-->
+</tr>
+</table>
 
 <br>
 <%= link_to '編集', edit_bookmark_path(@bookmark), class: "btn btn-primary" %>
-<%= link_to 'マイページへ戻る', bookmarks_path, class: "btn btn-default" %>
-<br>
-<br>
-<p align="right"><%= link_to '削除', @bookmark, method: :delete, data: { confirm: '本当に削除しますか?' } , class: "btn btn-danger" %></p>
+<%= link_to 'HOME', bookmarks_path, class: "btn btn-default" %>
+
+
+<!--<p>-->
+<!--  Title:-->
+<!--  <strong><%= @bookmark.title %></strong>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  Url:-->
+<!--  <strong><%= @bookmark.url %></strong>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <% if @category_title %>-->
+<!--    Category:-->
+<!--    <strong><%= @bookmark.category_id %>.<%=h @category_title %></strong></p>-->
+<!--  <% end %>-->
+<!--</p>-->

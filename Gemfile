@@ -9,6 +9,10 @@ gem 'bcrypt-ruby', '3.1.2'
 group :development do
   gem 'sqlite3', '1.3.9'
 end
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
 gem 'sass-rails', '4.0.3'
 gem 'uglifier', '2.5.3'
@@ -23,6 +27,11 @@ gem 'devise'
 
 group :doc do
   gem 'sdoc', '0.4.1', require: false
+end
+
+group :development, :test do
+  gem 'hirb'         # モデルの出力結果を表形式で表示するGem
+  gem 'hirb-unicode' # 日本語などマルチバイト文字の出力時の出力結果のずれに対応
 end
 
 

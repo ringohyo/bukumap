@@ -6,9 +6,16 @@
 <!--</p>-->
 
 <p>
-  <strong>Title:</strong>
-  <%= @category.title %>
+  Title:　<%= @category.title %>
+</p>
+<p align="right">
+  <%= link_to '削除', @category, method: :delete, data: { confirm: '本当に削除しますか?' } , class: "btn btn-danger" %>
 </p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<!--<%= link_to 'Edit', edit_category_path(@category) %> |-->
+<!--<%= link_to 'Back', categories_path %>-->
+
+
+<br>
+<%= link_to '編集', edit_category_path(@category), class: "btn btn-primary" %>
+<%= link_to 'カテゴリ一覧へ戻る', categories_path, class: "btn btn-default" %>

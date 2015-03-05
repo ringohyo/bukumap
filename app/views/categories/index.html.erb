@@ -2,23 +2,27 @@
   <div class="row">
     
     <div class="col-md-2">
-    <%= link_to "カテゴリ作成", new_category_path, class: "btn btn-lg btn-default" %>
     </div>
     
-    <div class="col-md-10" style="background-color: aliceblue;">
-      <h4>カテゴリ</h4>
-      <ul class="nav nav-pills nav-stacked">
+    <div class="col-md-10">
+      <h4>カテゴリ編集</h4>
+      <ul class="nav nav-pills nav-stacked" style="background-color: aliceblue;">
         <li role="presentation">
-          <% @categories.each do |category| %>
-            <%= link_to edit_category_path(category) do %><%= category.id %>.<%= category.title %><% end %>
+          <% @categories.each.with_index(1) do |category,index| %>
+            <%= link_to edit_category_path(category) do %>
+              <%= index %>.<%= category.title %>
+              <!--<%= category.id %>.<%= category.title %><span style="float:right;" class="glyphicon glyphicon-cog" aria-hidden="true"></span>-->
+            <% end %>
           <% end %>
         </li>
       </ul>
+       <p style="margin-top:30px; float:right;">
+        <%= link_to "カテゴリ作成", new_category_path, class: "btn btn-lg btn-default" %>
+      </p>
     </div>
     
   </div>
 </div>
-
 
 
 <!--  <tbody>-->
