@@ -4,8 +4,10 @@ class CategoriesController < ApplicationController
   respond_to :html
 
   def index
-    @categories = Category.all
+    # @categories = Category.all
     # @categories = Category.where("id LIKE ?", "%#{params[:id]}%")
+    @categories = current_user.categories
+    # @user = User.all 
     respond_with(@categories)
   end
 
@@ -23,7 +25,13 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @category.save
+    @category.user = current_user
+    # @category.save
+      if @category.save
+        redirect_to @category, :notice => 'カテゴリーを作成しました'
+      else
+        render :action => 'new' 
+      end
     respond_with(@category)
   end
 

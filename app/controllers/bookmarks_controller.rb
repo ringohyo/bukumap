@@ -4,14 +4,16 @@ class BookmarksController < ApplicationController
   # GET /bookmarks
   # GET /bookmarks.json
   def index
-    @bookmarks = Bookmark.all
-    @categories = Category.all
+    @bookmarks = current_user.bookmarks
+    @categories = current_user.categories
   end
- 
+
   # GET /bookmarks/category_filter/1
   def category_filter
     @bookmarks = Bookmark.where("category_id = ?", params[:id] )
-    @categories = Category.all
+    # @bookmarks = current_user.bookmarks
+    @categories = current_user.categories
+    # @categories = Category.all
     @active_id = params[:id].to_i
     render :index
   end
@@ -42,15 +44,18 @@ class BookmarksController < ApplicationController
   # POST /bookmarks.json
   def create
     @bookmark = Bookmark.new(bookmark_params)
-    respond_to do |format|
+    @bookmark.user = current_user
+    # respond_to do |format|
       if @bookmark.save
-        format.html { redirect_to @bookmark, notice: 'ブックマークを作成しました' }
-        format.json { render action: 'show', status: :created, location: @bookmark }
+        redirect_to @bookmark, :notice => 'ブックマークを作成しました'
+        # format.html { redirect_to @bookmark, notice: 'ブックマークを作成しました' }
+        # format.json { render action: 'show', status: :created, location: @bookmark }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @bookmark.errors, status: :unprocessable_entity }
+        render :action => 'new'
+        # format.html { render action: 'new' }
+        # format.json { render json: @bookmark.errors, status: :unprocessable_entity }
       end
-    end
+    # end
   end
 
   # PATCH/PUT /bookmarks/1
@@ -87,7 +92,7 @@ class BookmarksController < ApplicationController
     def bookmark_params
       params.require(:bookmark).permit(:title, :url, :category_id)
     end
-    
+
     def generate_category_list
       @categories = Category.find(:all, :order => "title")
     end
