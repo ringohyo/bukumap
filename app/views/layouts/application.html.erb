@@ -23,15 +23,14 @@
       </div>
       
       <% if user_signed_in? %>
-      <span style=color:blue;>id: <%= current_user.email %></span>
-      
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <!--<li><%= link_to "bookmarklet", "javascript:void((function(){var%20d=document;s=d.createElement('script');s.setAttribute('src','https://bukumap.herokuapp.com/javascripts/bookmarklet.js');d.body.appendChild(s);})());" %></li>-->
           <li><%= link_to "HOME", bookmarks_path %></li>
           <li><%= link_to "ブクマ作成", new_bookmark_path %></li>
+          <li><%= link_to "カテゴリ作成", new_category_path %></li>
           <li><%= link_to "カテゴリ一覧", categories_path %></li>
-          <li><%= link_to "アカウント編集", edit_user_registration_path %></li>
+          <li><%= link_to "ID: "+ current_user.email, edit_user_registration_path %></li>
           <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></li>
         </ul>
       </div>

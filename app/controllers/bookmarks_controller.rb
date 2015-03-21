@@ -4,13 +4,13 @@ class BookmarksController < ApplicationController
   # GET /bookmarks
   # GET /bookmarks.json
   def index
-    @bookmarks = current_user.bookmarks
+    @bookmarks = current_user.bookmarks.order("id DESC")
     @categories = current_user.categories
   end
 
   # GET /bookmarks/category_filter/1
   def category_filter
-    @bookmarks = Bookmark.where("category_id = ?", params[:id] )
+    @bookmarks = Bookmark.where("category_id = ?", params[:id]).order("id DESC")
     # @bookmarks = current_user.bookmarks
     @categories = current_user.categories
     # @categories = Category.all
