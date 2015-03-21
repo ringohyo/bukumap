@@ -16,7 +16,6 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    @category = Category.new
     respond_with(@category)
   end
 
@@ -28,11 +27,11 @@ class CategoriesController < ApplicationController
     @category.user = current_user
     # @category.save
       if @category.save
-        redirect_to @category, :notice => 'カテゴリーを作成しました'
+        # redirect_to @category, :notice => 'カテゴリーを作成しました'
+        redirect_to @category
       else
         render :action => 'new' 
       end
-    respond_with(@category)
   end
 
   def update

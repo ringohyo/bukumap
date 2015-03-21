@@ -3,14 +3,12 @@
 
     <%= render 'sidebar' %>
   
-    <div class="col-md-10" style="background-color: aliceblue;">
-      <h4>マイページ</h4>
+    <div class="col-md-10">
       <div class="row">
       <% @bookmarks.each do |bookmark| %>
            <div class="col-md-2">
               <div class="thumbnail">
                 <%= link_to bookmark.url, :target=>["_blank"] do %>
-                    <!--<img src="assets/sample.png" alt="sample_image" width="128" hight="128">-->
                     <img src="http://capture.heartrails.com/?<%= bookmark.url %>" alt="sample_image">
                     <!--<p>No.<%= bookmark.id %></p>-->
                 <% end %>
