@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    respond_with(@category)
+    @category = Category.new
   end
 
   def edit
